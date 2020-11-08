@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (!filename.empty())
+    if (filename.empty())
     {
         printf("Error! No output file spceified!\n");
         exit(1);
