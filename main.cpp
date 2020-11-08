@@ -8,12 +8,6 @@ int main(int argc, char *argv[])
 
     std::string filename;
 
-    if (argc != 3)
-    {
-        printf("You must specify the output filename!");
-        exit(1);
-    }
-
     for (int c = 1; c < argc; ++c)
     {
         std::string arg(argv[c]);
@@ -21,10 +15,16 @@ int main(int argc, char *argv[])
         if (arg == "--output")
         {
             filename = std::string(argv[++c]);
+            break;
         }
     }
 
-    assert(!filename.empty());
+    if (!filename.empty())
+    {
+        printf("Error! No output file spceified!\n");
+        exit(1);
+    }
+
     FILE *file = fopen(filename.c_str(), "w");
     if (!file)
     {
